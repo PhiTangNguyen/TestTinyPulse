@@ -6,4 +6,5 @@ Full Inner file: the answer for SQL
  - Q2/2020: April 1 - June 30 (Query SQL)
  
 TINYPulse.postman_collection.json file : the answer for API Testing
-  -Run as Postman
+
+  - Run as Postman
