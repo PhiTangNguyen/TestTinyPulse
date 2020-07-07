@@ -1,0 +1,353 @@
+{
+	"info": {
+		"_postman_id": "28894c4b-e4a5-499d-810e-f5041dbd2745",
+		"name": "TINYPulse",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GETDATA",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1c570ef3-c47e-49bf-a82f-40e9b69a849e",
+						"exec": [
+							"var schema = {\r",
+							"\r",
+							"    \r",
+							"    \"$schema\": \"http://json-schema.org/draft-07/schema#\",\r",
+							"    \"$id\": \"http://json-schema.org/draft-07/schema#\",\r",
+							"    \"title\": \"Core schema meta-schema\",\r",
+							"    \"definitions\": {\r",
+							"        \"schemaArray\": {\r",
+							"            \"type\": \"array\",\r",
+							"            \"minItems\": 1,\r",
+							"            \"items\": { \"$ref\": \"#\" }\r",
+							"        },\r",
+							"        \"nonNegativeInteger\": {\r",
+							"            \"type\": \"integer\",\r",
+							"            \"minimum\": 0\r",
+							"        },\r",
+							"        \"nonNegativeIntegerDefault0\": {\r",
+							"            \"allOf\": [\r",
+							"                { \"$ref\": \"#/definitions/nonNegativeInteger\" },\r",
+							"                { \"default\": 0 }\r",
+							"            ]\r",
+							"        },\r",
+							"        \"simpleTypes\": {\r",
+							"            \"enum\": [\r",
+							"                \"array\",\r",
+							"                \"boolean\",\r",
+							"                \"integer\",\r",
+							"                \"null\",\r",
+							"                \"number\",\r",
+							"                \"object\",\r",
+							"                \"string\"\r",
+							"            ]\r",
+							"        },\r",
+							"        \"stringArray\": {\r",
+							"            \"type\": \"array\",\r",
+							"            \"items\": { \"type\": \"string\" },\r",
+							"            \"uniqueItems\": true,\r",
+							"            \"default\": []\r",
+							"        }\r",
+							"    },\r",
+							"    \"type\": [\"object\", \"boolean\"],\r",
+							"    \"properties\": {\r",
+							"        \"$id\": {\r",
+							"            \"type\": \"string\",\r",
+							"            \"format\": \"uri-reference\"\r",
+							"        },\r",
+							"        \"$schema\": {\r",
+							"            \"type\": \"string\",\r",
+							"            \"format\": \"uri\"\r",
+							"        },\r",
+							"        \"$ref\": {\r",
+							"            \"type\": \"string\",\r",
+							"            \"format\": \"uri-reference\"\r",
+							"        },\r",
+							"        \"$comment\": {\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"title\": {\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"description\": {\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"default\": true,\r",
+							"        \"readOnly\": {\r",
+							"            \"type\": \"boolean\",\r",
+							"            \"default\": false\r",
+							"        },\r",
+							"        \"examples\": {\r",
+							"            \"type\": \"array\",\r",
+							"            \"items\": true\r",
+							"        },\r",
+							"        \"multipleOf\": {\r",
+							"            \"type\": \"number\",\r",
+							"            \"exclusiveMinimum\": 0\r",
+							"        },\r",
+							"        \"maximum\": {\r",
+							"            \"type\": \"number\"\r",
+							"        },\r",
+							"        \"exclusiveMaximum\": {\r",
+							"            \"type\": \"number\"\r",
+							"        },\r",
+							"        \"minimum\": {\r",
+							"            \"type\": \"number\"\r",
+							"        },\r",
+							"        \"exclusiveMinimum\": {\r",
+							"            \"type\": \"number\"\r",
+							"        },\r",
+							"        \"maxLength\": { \"$ref\": \"#/definitions/nonNegativeInteger\" },\r",
+							"        \"minLength\": { \"$ref\": \"#/definitions/nonNegativeIntegerDefault0\" },\r",
+							"        \"pattern\": {\r",
+							"            \"type\": \"string\",\r",
+							"            \"format\": \"regex\"\r",
+							"        },\r",
+							"        \"additionalItems\": { \"$ref\": \"#\" },\r",
+							"        \"items\": {\r",
+							"            \"anyOf\": [\r",
+							"                { \"$ref\": \"#\" },\r",
+							"                { \"$ref\": \"#/definitions/schemaArray\" }\r",
+							"            ],\r",
+							"            \"default\": true\r",
+							"        },\r",
+							"        \"maxItems\": { \"$ref\": \"#/definitions/nonNegativeInteger\" },\r",
+							"        \"minItems\": { \"$ref\": \"#/definitions/nonNegativeIntegerDefault0\" },\r",
+							"        \"uniqueItems\": {\r",
+							"            \"type\": \"boolean\",\r",
+							"            \"default\": false\r",
+							"        },\r",
+							"        \"contains\": { \"$ref\": \"#\" },\r",
+							"        \"maxProperties\": { \"$ref\": \"#/definitions/nonNegativeInteger\" },\r",
+							"        \"minProperties\": { \"$ref\": \"#/definitions/nonNegativeIntegerDefault0\" },\r",
+							"        \"required\": { \"$ref\": \"#/definitions/stringArray\" },\r",
+							"        \"additionalProperties\": { \"$ref\": \"#\" },\r",
+							"        \"definitions\": {\r",
+							"            \"type\": \"object\",\r",
+							"            \"additionalProperties\": { \"$ref\": \"#\" },\r",
+							"            \"default\": {}\r",
+							"        },\r",
+							"        \"properties\": {\r",
+							"            \"type\": \"object\",\r",
+							"            \"additionalProperties\": { \"$ref\": \"#\" },\r",
+							"            \"default\": {}\r",
+							"        },\r",
+							"        \"patternProperties\": {\r",
+							"            \"type\": \"object\",\r",
+							"            \"additionalProperties\": { \"$ref\": \"#\" },\r",
+							"            \"propertyNames\": { \"format\": \"regex\" },\r",
+							"            \"default\": {}\r",
+							"        },\r",
+							"        \"dependencies\": {\r",
+							"            \"type\": \"object\",\r",
+							"            \"additionalProperties\": {\r",
+							"                \"anyOf\": [\r",
+							"                    { \"$ref\": \"#\" },\r",
+							"                    { \"$ref\": \"#/definitions/stringArray\" }\r",
+							"                ]\r",
+							"            }\r",
+							"        },\r",
+							"        \"propertyNames\": { \"$ref\": \"#\" },\r",
+							"        \"const\": true,\r",
+							"        \"enum\": {\r",
+							"            \"type\": \"array\",\r",
+							"            \"items\": true,\r",
+							"            \"minItems\": 1,\r",
+							"            \"uniqueItems\": true\r",
+							"        },\r",
+							"        \"type\": {\r",
+							"            \"anyOf\": [\r",
+							"                { \"$ref\": \"#/definitions/simpleTypes\" },\r",
+							"                {\r",
+							"                    \"type\": \"array\",\r",
+							"                    \"items\": { \"$ref\": \"#/definitions/simpleTypes\" },\r",
+							"                    \"minItems\": 1,\r",
+							"                    \"uniqueItems\": true\r",
+							"                }\r",
+							"            ]\r",
+							"        },\r",
+							"        \"format\": { \"type\": \"string\" },\r",
+							"        \"contentMediaType\": { \"type\": \"string\" },\r",
+							"        \"contentEncoding\": { \"type\": \"string\" },\r",
+							"        \"if\": {\"$ref\": \"#\"},\r",
+							"        \"then\": {\"$ref\": \"#\"},\r",
+							"        \"else\": {\"$ref\": \"#\"},\r",
+							"        \"allOf\": { \"$ref\": \"#/definitions/schemaArray\" },\r",
+							"        \"anyOf\": { \"$ref\": \"#/definitions/schemaArray\" },\r",
+							"        \"oneOf\": { \"$ref\": \"#/definitions/schemaArray\" },\r",
+							"        \"not\": { \"$ref\": \"#\" }\r",
+							"    },\r",
+							"    \"default\": true\r",
+							"\r",
+							"};\r",
+							"\r",
+							"\r",
+							"pm.test('Schema is valid', function() {\r",
+							"  var result = tv4.validateResult(pm.response.json(),schema);\r",
+							"  if (!result.valid){\r",
+							"      console.log(result);\r",
+							"  }\r",
+							"\r",
+							"  pm.expect(result.valid).to.be.true;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validate Schema\",  ()=> {\r",
+							"    pm.response.to.have.jsonSchema(schema);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "AccessToken",
+						"value": "fb8af4ffe2ee5485d13a",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}",
+					"host": [
+						"{{url}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Mock",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "AccessToken",
+								"value": "fb8af4ffe2ee5485d13a",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/vnd.api+json; charset=utf-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "X-Xss-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Download-Options",
+							"value": "noopen"
+						},
+						{
+							"key": "X-Permitted-Cross-Domain-Policies",
+							"value": "none"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "strict-origin-when-cross-origin"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 06 Jul 2020 10:10:39 GMT"
+						},
+						{
+							"key": "Link",
+							"value": "<https://api.tinypulse.com/pulse/v1/cheers?page[number]=1&page[size]=100>; rel=\"first\" ,  <https://api.tinypulse.com/pulse/v1/cheers?page[number]=3&page[size]=100>; rel=\"last\" ,  <https://api.tinypulse.com/pulse/v1/cheers?page[number]=1&page[size]=100>; rel=\"self\" ,  <https://api.tinypulse.com/pulse/v1/cheers?page[number]=2&page[size]=100>; rel=\"next\""
+						},
+						{
+							"key": "Total-Records",
+							"value": "251"
+						},
+						{
+							"key": "Total-Pages",
+							"value": "3"
+						},
+						{
+							"key": "Per-Page",
+							"value": "100"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "max-age=600, public"
+						},
+						{
+							"key": "Etag",
+							"value": "W/\"5b965bdc93a6ada8549d591292116bbe\""
+						},
+						{
+							"key": "X-Request-Id",
+							"value": "ab159f39-5b71-4480-ae1d-f5335f2fb42c"
+						},
+						{
+							"key": "X-Runtime",
+							"value": "0.112406"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000; includeSubDomains"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": "{\"id\":\"300000\"}"
+				}
+			]
+		}
+	],
+	"protocolProfileBehavior": {}
+}
